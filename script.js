@@ -99,13 +99,18 @@ function showQuestion(){
 // get which one is right and which one is the wrong answer 
 answersContainer.addEventListener('click', function(event){
   const selectedAnswerBtn = event.target;
-  if(selectedAnswerBtn.dataset.correct === 'true'){
-    console.log('right');
-    
+  const allLi = answersContainer.querySelectorAll('li');
+
+  if(selectedAnswerBtn.dataset.correct === "true"){
+    selectedAnswerBtn.classList.add('correct');
   }else{
-    console.log('nou wrong!');
+    selectedAnswerBtn.classList.add('incorrect');
+    for(let list of allLi){
+      if(list.dataset.correct === 'true'){
+        list.classList.add('correct')
+      }
+    }
   }
-  
 })
 
 
