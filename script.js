@@ -96,7 +96,17 @@ function showQuestion(){
   })
 }
 
-
+// get which one is right and which one is the wrong answer 
+answersContainer.addEventListener('click', function(event){
+  const selectedAnswerBtn = event.target;
+  if(selectedAnswerBtn.dataset.correct === 'true'){
+    console.log('right');
+    
+  }else{
+    console.log('nou wrong!');
+  }
+  
+})
 
 
 // add next button function to get another question & answers 
