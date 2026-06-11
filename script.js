@@ -96,3 +96,11 @@ function showQuestion(){
   })
 }
 
+
+
+
+// add next button function to get another question & answers 
+nextBtn.addEventListener('click', function(){
+  currentQuestionIndex++;
+  showQuestion();
+})
