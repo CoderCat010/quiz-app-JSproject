@@ -140,4 +140,4 @@ restartButton.addEventListener('click', () =>{
   scoreSpan.textContent = currentScore;
   resultScreen.classList.remove('active');
   startScreen.classList.add('active');
-})
+});
