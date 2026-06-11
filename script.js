@@ -62,3 +62,8 @@ const quizQuestions = [
     ],
   },
 ];
+
+startButton.addEventListener('click', function(event){
+    startScreen.classList.remove('active')
+    quizScreen.classList.add('active')
+})
