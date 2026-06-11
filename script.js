@@ -67,11 +67,12 @@ const quizQuestions = [
 
 // store initial index number
 let currentQuestionIndex = 0;
+let currentScore = 0;
 
 startButton.addEventListener('click', function(){
   startScreen.classList.remove('active');
   quizScreen.classList.add('active');
-  showQuestion()
+  showQuestion();
 })
 
 function showQuestion(){
@@ -101,8 +102,11 @@ answersContainer.addEventListener('click', function(event){
   const selectedAnswerBtn = event.target;
   const allLi = answersContainer.querySelectorAll('li');
 
+  // if answer is correct show green and if answer is wrong show red including right answer button
   if(selectedAnswerBtn.dataset.correct === "true"){
     selectedAnswerBtn.classList.add('correct');
+    currentScore++;
+    scoreSpan.textContent = currentScore;
   }else{
     selectedAnswerBtn.classList.add('incorrect');
     for(let list of allLi){
@@ -116,6 +120,24 @@ answersContainer.addEventListener('click', function(event){
 
 // add next button function to get another question & answers 
 nextBtn.addEventListener('click', function(){
-  currentQuestionIndex++;
-  showQuestion();
+  if(currentQuestionIndex === quizQuestions.length - 1){
+    quizScreen.classList.remove('active');
+    resultScreen.classList.add('active');
+    finalScoreSpan.textContent = currentScore;
+    maxScoreSpan.textContent = quizQuestions.length;
+  }else{
+    currentQuestionIndex++;
+    // question counter
+    currentQuestionSpan.textContent = currentQuestionIndex + 1;
+    showQuestion();
+  }
+})
+
+restartButton.addEventListener('click', () =>{
+  currentQuestionIndex = 0;
+  currentScore = 0;
+  currentQuestionSpan.textContent = 1;
+  scoreSpan.textContent = currentScore;
+  resultScreen.classList.remove('active');
+  startScreen.classList.add('active');
 })
