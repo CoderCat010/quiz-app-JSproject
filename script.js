@@ -10,8 +10,10 @@ const totalQuestionsSpan = document.getElementById("total-questions");
 const scoreSpan = document.getElementById("score");
 const finalScoreSpan = document.getElementById("final-score");
 const maxScoreSpan = document.getElementById("max-score");
+const nextBtn = document.getElementById('next-btn');
 const resultMessage = document.getElementById("result-message");
 const restartButton = document.getElementById("restart-btn");
+
 
 
 // stored all questions and answer option
@@ -63,21 +65,34 @@ const quizQuestions = [
   },
 ];
 
-startButton.addEventListener('click', function(event){
-    // remove css class
-    startScreen.classList.remove('active')
-    quizScreen.classList.add('active')
+// store initial index number
+let currentQuestionIndex = 0;
 
-    // add each one quetion on the page dynamically
-    let currentQuestion = quizQuestions[0].question;
-    // add one the page
-    questionText.textContent = currentQuestion;
-
-    // create ul list
-    quizQuestions[0].answers.forEach((answer) => {
-        const li = document.createElement('li');
-        li.classList.add('answer-btn');
-        li.innerText = answer.text;
-        answersContainer.appendChild(li)
-    })
+startButton.addEventListener('click', function(){
+  startScreen.classList.remove('active');
+  quizScreen.classList.add('active');
+  showQuestion()
 })
+
+function showQuestion(){
+  // show question
+  const eachOneQuestion = quizQuestions[currentQuestionIndex].question;
+  questionText.textContent = eachOneQuestion;
+
+  // show each one answer's option
+  const currentAnswer = quizQuestions[currentQuestionIndex].answers;
+
+  // clear previous each one answer's option
+  answersContainer.innerHTML = '';
+
+  // loop through each one question answer 
+  currentAnswer.forEach((answer) => {
+    // create li 
+    const li = document.createElement('li');
+    li.classList.add('answer-btn');
+    li.innerText = answer.text;
+    li.dataset.correct = answer.correct;
+    answersContainer.appendChild(li);
+  })
+}
+
