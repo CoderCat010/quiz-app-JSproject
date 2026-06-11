@@ -64,6 +64,20 @@ const quizQuestions = [
 ];
 
 startButton.addEventListener('click', function(event){
+    // remove css class
     startScreen.classList.remove('active')
     quizScreen.classList.add('active')
+
+    // add each one quetion on the page dynamically
+    let currentQuestion = quizQuestions[0].question;
+    // add one the page
+    questionText.textContent = currentQuestion;
+
+    // create ul list
+    quizQuestions[0].answers.forEach((answer) => {
+        const li = document.createElement('li');
+        li.classList.add('answer-btn');
+        li.innerText = answer.text;
+        answersContainer.appendChild(li)
+    })
 })
