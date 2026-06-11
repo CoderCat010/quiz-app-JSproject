@@ -1,5 +1,3 @@
-/* Basic Reset */
-
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +14,6 @@ body {
   font-family: sans-serif;
 }
 
-/* parent container */
 .container {
   background-color: white;
   border-radius: 1rem;
@@ -24,12 +21,8 @@ body {
   width: 100%;
   max-width: 600px;
   overflow: hidden;
-  position: relative;
 }
 
-
-
-/* SCREENS */
 .screen {
   display: none;
   padding: 2rem;
@@ -40,7 +33,6 @@ body {
   display: block;
 }
 
-/* START SCREEN */
 #start-screen h1 {
   color: #e86a33;
   margin-bottom: 20px;
@@ -68,29 +60,27 @@ button:hover {
   background-color: #d45b28;
 }
 
+#answers-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+
 .quiz-header {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
   margin-bottom: 1rem;
 }
 
 #question-text {
   color: #333;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.4;
-}
-
-.quiz-info {
-  display: flex;
-  justify-content: space-between;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-.answers-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 25px;
 }
 
 .answer-btn {
@@ -101,6 +91,7 @@ button:hover {
   padding: 1rem;
   cursor: pointer;
   text-align: left;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
@@ -121,7 +112,10 @@ button:hover {
   color: #dc3545;
 }
 
-/* RESULT SCREEN */
+#next-btn {
+  margin-top: 1rem;
+}
+
 #result-screen h1 {
   color: #e86a33;
   margin-bottom: 30px;
